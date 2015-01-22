@@ -1,6 +1,5 @@
 class Response < ActiveRecord::Base
   belongs_to :option
   belongs_to :user
-
-  validates :user, uniqueness: { scope: :option }
+  validates :user_id, uniqueness: { scope: :option }
 end
