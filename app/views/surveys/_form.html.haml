@@ -1,0 +1,20 @@
+= form_for(@survey)do |f|
+  = f.label :name
+  = f.text_field :name
+  %br
+  = f.label :survey_type
+  = f.select :survey_type, Survey::TYPES, include_blank: true
+  %br
+  = f.label :conducted_on
+  = f.date_field :conducted_on
+  %br
+  = f.label :count_people
+  = f.number_field :count_people
+  %br
+
+  /= f.fields_for :questions, @survey.questions do |q|
+  /= q.label :description
+  /= end
+  /= q.text_field :description
+  .actions
+    = f.submit "save"

@@ -1,0 +1,16 @@
+=form_for(@survey)do |f|
+  %table
+    %th
+      = f.label "Question no"
+      = f.label "Description"
+    - @survey.questions.each do |f1|
+      %tr
+        %td= f1.id
+        %td= f1.description
+        %td= f1.survey_id
+        %td= link_to "Show", question_path(f1.survey_id)
+        %td= link_to "Edit", edit_question_path(f1.survey_id)
+        %td= link_to "Delete", survey_path(f1.survey), method: :delete, data: {confirm: "Do you want to delete?"}
+
+= link_to "New question", new_survey_question_path(@survey.id)
+= link_to "Home", surveys_path

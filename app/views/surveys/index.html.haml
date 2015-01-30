@@ -1,0 +1,19 @@
+%p= flash[:notice]
+%h3
+  List of Surveys
+%table{border: 1}
+  %tr
+    %th Survey Name
+    %th Survey Type
+    %th Conducted on
+    %th Count People
+  - @surveys.each do |survey|
+    %tr
+      %td= survey.name
+      %td= survey.survey_type
+      %td= survey.conducted_on
+      %td= survey.count_people
+      %td= link_to "Show", survey_path(survey)
+      %td= link_to "Update", edit_survey_path(survey)
+      %td= link_to "Delete", survey_path(survey), method: :delete, data: {confirm: "Do you want to delete?"}
+= link_to "New Survey", new_survey_path

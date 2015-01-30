@@ -1,9 +1,10 @@
 class CreateQuestions < ActiveRecord::Migration
   def change
     create_table :questions do |t|
-      t.string :description, null: false
-      t.references :survey, index: true, null: false
+      t.string :description
+      t.references :survey, index: true
       t.timestamps null: false
     end
+    add_foreign_key :quesitons, :surveys
   end
 end

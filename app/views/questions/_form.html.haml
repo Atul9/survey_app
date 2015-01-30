@@ -1,0 +1,18 @@
+%p= flash[:notice]
+= form_for(@question)do |f|
+  = f.label :survey_id
+  = f.text_field :survey_id
+  = f.label :description
+  = f.text_field :description
+  %br
+  %table{border: 2}
+    %th Option Id
+    %th Description
+    = f.fields_for :options do|f1|
+      %tr
+        %td= f1.label :id
+        %td= f1.text_field :description
+  %br
+
+  .actions
+    = f.submit "save"

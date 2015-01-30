@@ -1,0 +1,11 @@
+Question:
+
+= @question.description
+%table{border: 2}
+  %th Option no
+  %th Description
+  - @options.each do |o|
+    %tr
+      %td= o.id
+      %td= o.description
+=link_to "Home", survey_path
